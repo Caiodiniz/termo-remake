@@ -1,3 +1,3 @@
-#Recriação Simples do jogo TERMO utilizando Python
+# Recriação Simples do jogo TERMO utilizando Python
 
-##Colocar Descrição
+## Colocar Descrição
