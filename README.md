@@ -1,3 +1,3 @@
-#Simple recreation of the TERMO game using Python
+# Simple recreation of the TERMO game using Python
 
-##Description
+## Description
