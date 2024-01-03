@@ -1,5 +1,7 @@
-from random import choice         #choice randomly a word in the list
-from unidecode import unidecode   #Remove accents
+from random import choice         # Choice randomly a word in the list
+from unidecode import unidecode   # Remove accents
+import os                         # Manipulate and find path
+from json import load             # Load json files
 
 def remove_accents_and_uppercase(word):
   word_without_accents = unidecode(word).lower()
@@ -38,7 +40,6 @@ def print_colored_letter(letter, color):
   color_code = colors.get(color)
   print(f"{color_code}{letter}{colors['reset']}", end = '')
 
-
 def print_word(status_list):
   status = {
     'match': 'green',
@@ -49,18 +50,14 @@ def print_word(status_list):
     print_colored_letter(item[0], status.get(item[1]))
   print()
 
+script_dir = os.path.dirname(__file__)
+five_letter_words_path = os.path.join(script_dir, 'data/five_letter_words.json')
 
-# List of five letter word as an example to testing
-five_letter_words = [
-  "arara", "média", "outro", "mesmo", "sagaz", "âmago", "negro", "termo", "êxito", "mexer",
-  "ética", "plena", "mútua", "tênue", "fazer", "assim", "vigor", "sutil", "aquém", "porém",
-  "seção", "fosse", "sanar", "poder", "audaz", "ideia", "cerne", "inato", "moral", "sobre",
-  "desde", "muito", "justo", "honra", "quiçá", "torpe", "sonho", "razão", "etnia", "fútil",
-  "ícone", "anexo", "amigo", "égide", "tange", "lapso", "haver", "expor", "dengo", "mútuo",
-  "tempo", "nobre", "senso", "afeto", "algoz", "dança", "ameba", "áureo", "amara", "carta"
-]
+with open(five_letter_words_path, 'r') as file:
+    five_letter_words = load(file)
+
 #game_word = choice(five_letter_words)
-game_word = five_letter_words[0]
+game_word = five_letter_words[3]
 
 matched = False
 for attempt in range(8):
@@ -94,9 +91,6 @@ for attempt in range(8):
       for item in user_word_letter_occurrences:
         if item[0] == game_word_normalized[i]:
           item[1] += 1
-
-
-
 
   # Set "near" status to the letters in nearing positions.
   for i in range(5):
