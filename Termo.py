@@ -56,8 +56,11 @@ five_letter_words_path = os.path.join(script_dir, 'data/five_letter_words.json')
 with open(five_letter_words_path, 'r') as file:
     five_letter_words = load(file)
 
-#game_word = choice(five_letter_words)
-game_word = five_letter_words[3]
+game_word = choice(five_letter_words)
+
+
+#game_word = five_letter_words[3]
+
 
 matched = False
 for attempt in range(8):
@@ -123,3 +126,4 @@ if matched:
   print("Words Matched!")
 else:
   print("Game Over!")
+  print("The Termo word was:", game_word)
